@@ -1,0 +1,51 @@
+****************************************************************************
+* PROGRAMMED BY : Nick Reardon and Danin Namiranian
+* CLASS         : CS1D
+* SECTION       : MW - 2:30p
+* Lab #1        : Templates
+****************************************************************************
+
+                              Lab #1 - Templates
+
+  This program will generate 15 random 3 digit numbers and
+  store them in a vector. Then it will:
+    - Sort the numbers
+    - Reverse the digits in each number
+        - Store the reversed numbers in a new vector
+        - Find the some of the 3 digits of each numbers
+        - Store the sums in a new vector
+    - Print all 3 vectors
+
+      Notes:
+        - Numbers less than 100, will display with
+          leading zeroes (eg. 009, rather than just 9)
+        - Sums will be displayed associated with the
+          original number
+
+****************************************************************************
+
+ ** Populating with random  numbers
+
+ ** Sorting vectors
+
+ ** Reversing digits and storing in new vector
+
+ ** Summing the digits and storing in new vector
+
+Original  Reversed
+103       301       Sum of the digits of 103 is 4
+185       581       Sum of the digits of 185 is 14
+271       172       Sum of the digits of 271 is 10
+321       123       Sum of the digits of 321 is 6
+370       073       Sum of the digits of 370 is 10
+377       773       Sum of the digits of 377 is 17
+467       764       Sum of the digits of 467 is 17
+522       225       Sum of the digits of 522 is 9
+640       046       Sum of the digits of 640 is 10
+642       246       Sum of the digits of 642 is 12
+647       746       Sum of the digits of 647 is 17
+656       656       Sum of the digits of 656 is 17
+816       618       Sum of the digits of 816 is 15
+961       169       Sum of the digits of 961 is 16
+994       499       Sum of the digits of 994 is 22
+Press any key to continue . . .

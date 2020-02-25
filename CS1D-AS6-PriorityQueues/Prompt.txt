@@ -1,0 +1,54 @@
+ Implement two priority queues to simulate an afternoon in an 
+ emergency room. Your software should NOT be dependent on 
+ the given data.
+  
+    1. Priority Queue 1 
+ Develop software or use the author’s priority queue ADT to 
+ implement a priority queue based on a heap.  
+
+
+    2. Priority Queue 2 
+ Use the STL priority_queue
+
+ Test both priority queues with the following data assuming 
+ that the priority queue is built at noon and Doctor DoGood is 
+ the only doctor on duty. Each patient requires 25 minutes of 
+ care. The patient who waited the longest has the highest 
+ priority unless there is a life-threatening scenario. Determine 
+ the order in which the patients will be treated. You will need 
+ to create a timer. Output the time each appointment starts 
+ and ends.
+ Assumptions:
+    1. When a patient's care is interrupted, they still only get 
+       25 minutes of care total
+    2. If a patient’s treatment starts at 1:00 and is not 
+       interrupted, then the next patient’s treatment will 
+       start at 1:25
+    3. Waiting time is wait time before noon
+
+ |-----------------------|-----------------------------|--------|
+ | Name                  |    Waiting Time (hours)     |  End   |
+ |_______________________|_____________________________|________|
+ | Bob Bleeding          |              5              |        |
+ |-----------------------|-----------------------------|--------|
+ | Frank Feelingbad      |              3              |        |
+ |-----------------------|-----------------------------|--------|
+ | Cathy Coughing        |              2              |        |
+ |-----------------------|-----------------------------|--------|
+ | Sam Sneezing          | Life threatening at 1:14 PM |        |
+ |-----------------------|-----------------------------|--------|
+ | Paula Pain            |              4              |        |
+ |-----------------------|-----------------------------|--------|
+ | Sid Sickly            | Life threatening at 3:01 PM |        |
+ |-----------------------|-----------------------------|--------|
+ | Alice Ailment         |              7              |        |
+ |-----------------------|-----------------------------|--------|
+ | Irene Ill             |              1              |        |
+ |-----------------------|-----------------------------|--------|
+ | Tom Temperature       |              6              |        |
+ |-----------------------|-----------------------------|--------|
+
+
+ Due February 26th
+
+
