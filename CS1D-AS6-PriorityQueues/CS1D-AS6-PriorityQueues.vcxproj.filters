@@ -24,13 +24,10 @@
     <ClInclude Include="PrintHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedDeque.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Except.h">
       <Filter>Header Files\Support</Filter>
     </ClInclude>
-    <ClInclude Include="VectorHeap.h">
+    <ClInclude Include="ArrayHeap.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

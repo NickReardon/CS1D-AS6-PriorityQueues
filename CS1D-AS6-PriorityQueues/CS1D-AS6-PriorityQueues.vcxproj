@@ -119,10 +119,9 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="LinkedDeque.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="PrintHeader.h" />
-    <ClInclude Include="VectorHeap.h" />
+    <ClInclude Include="ArrayHeap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

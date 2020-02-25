@@ -15,7 +15,18 @@
 #include "PrintHeader.h"
 
 //Program Specific
-
+#include "ArrayHeap.h"
 
 #endif // _HEADER_H_
 
+std::string ConvertTime(int totalMinutes, int startHour, bool hours24Style = false);
+
+void DischargePatient(ArrayMaxHeap<std::string, int>& heap, int totalMinutes);
+
+void AdmitPatient(ArrayMaxHeap<std::string, int>& heap, int totalMinutes);
+
+void InterruptPatient(ArrayMaxHeap<std::string, int>& heap, int totalMinutes, int currentTimer);
+
+void ResumePatient(ArrayMaxHeap<std::string, int>& heap, int totalMinutes, int currentTimer);
+
+void PriorityPatient(ArrayMaxHeap<std::string, int>& heap, int totalMinutes);
