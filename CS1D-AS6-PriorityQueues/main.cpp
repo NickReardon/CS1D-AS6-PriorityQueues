@@ -20,20 +20,19 @@ int main()
 
 	/********************************************************************/
 
-	//std::priority_queue
+	cout << endl << " Now doing written Priority Queue based on a heap" << endl << endl;
 
 	const int MAX_CARE_TIME = 25;
+	const int MAX_TOTAL_MINUTES = 300;
 
 	ArrayMaxHeap<std::string, int> heap;
+
+	cout << endl << "  -- 12::00 -- \n Creating priority queue of waiting patients..." << endl << endl;
+
 	heap.insert("Bob Bleeding", 5);
 	heap.insert("Frank Feelingbad", 3);
 	heap.insert("Cathy Coughing", 2);
-
-
-
 	heap.insert("Paula Pain", 4);
-
-
 	heap.insert("Alice Ailment", 7);
 	heap.insert("Irene Ill", 1);
 	heap.insert("Tom Temperature", 6);
@@ -43,25 +42,19 @@ int main()
 	bool emergency = false;
 
 
-	heap.printAll(cout);
-
-	AdmitPatient(heap, 0);
-	for (int time = 0; time <= 500; time++)
+	for (int time = 0; time <= MAX_TOTAL_MINUTES; )
 	{
 		if (!heap.empty())
 		{
-
-
 			switch (time)
 			{
 			case 74:
-				InterruptPatient(heap, time, timer);
 				heap.insert("Sam Sneezing", 1100);
-				PriorityPatient(heap, time);
 				emergency = true;
 				break;
 
 			case 181:
+
 				heap.insert("Sid Sickly", 100);
 				emergency = true;
 				break;
@@ -69,58 +62,201 @@ int main()
 
 			if (emergency)
 			{
+				if (emergencyTimer == 0)
+				{
+					if (!heap.empty())
+					{
+						InterruptPatient(heap, time, timer);
+
+						PriorityPatient(heap, time);
+					}
+				}
+
+				emergencyTimer++;
+				time++;
+
 				if (emergencyTimer == 25)
 				{
 					DischargePatient(heap, time);
 
 					heap.remove();
-					
+
 					if (!heap.empty())
 					{
 						ResumePatient(heap, time, timer);
 					}
 					emergency = false;
-				}
 
-
-				if (emergency)
-				{				
-					emergencyTimer++;
-				}
-				else
-				{
 					emergencyTimer = 0;
+
 				}
 			}
-
-			if (!emergency)
+			else if (!emergency)
 			{
-				if (timer == 25)
+				if (timer == 0)
+				{
+					if (!heap.empty())
+					{
+						AdmitPatient(heap, time);
+					}
+				}
+
+				timer++;
+				time++;
+
+				if (timer == MAX_CARE_TIME)
 				{
 					timer = 0;
 
 					DischargePatient(heap, time);
 
 					heap.remove();
-					if (!heap.empty())
-					{
-						AdmitPatient(heap, time);
-					}
-					
 
 				}
-
-				timer++;
-
 			}
+
+		}
+		else
+		{
+			time++;
 		}
 	}
 
+	cout << endl << "  --- END OF DAY  " << ConvertTime(MAX_TOTAL_MINUTES, 12) << " ----"
+		<< endl << endl;
 
+
+	//**************************************************************************************
+
+	//**************************************************************************************
+	cout << std::string(60, '_') << endl;
+	cout << endl << " Now doing STL Priority Queue" << endl << endl;
+
+	std::priority_queue< std::pair< int, std::string>> STL_PrioQ;
+
+	cout << endl << "  -- 12::00 -- \n Creating priority queue of waiting patients... " << endl << endl;
+
+	STL_PrioQ.push(std::make_pair(5, "Bob Bleeding"));
+	STL_PrioQ.push(std::make_pair(3, "Frank Feelingbad"));
+	STL_PrioQ.push(std::make_pair(2, "Cathy Coughing"));
+	STL_PrioQ.push(std::make_pair(4, "Paula Pain"));
+	STL_PrioQ.push(std::make_pair(7, "Alice Ailment"));
+	STL_PrioQ.push(std::make_pair(1, "Irene Ill"));
+	STL_PrioQ.push(std::make_pair(6, "Tom Temperature"));
+
+	timer = 0;
+	emergencyTimer = 0;
+	emergency = false;
+
+
+	for (int time = 0; time <= MAX_TOTAL_MINUTES; )
+	{
+		if (!STL_PrioQ.empty())
+		{
+			switch (time)
+			{
+			case 74:
+				STL_PrioQ.push(std::make_pair(999, "Sam Sneezing"));
+				emergency = true;
+				break;
+
+			case 181:
+
+				STL_PrioQ.push(std::make_pair(999, "Sid Sickly"));
+				emergency = true;
+				break;
+			}
+
+			if (emergency)
+			{
+				if (emergencyTimer == 0)
+				{
+					if (!STL_PrioQ.empty())
+					{
+						cout << "Patient Care Interrupted:" << endl
+							<< "Name: " << STL_PrioQ.top().second << endl
+							<< "Care interrupted at " << ConvertTime(time, 12, false) << endl
+							<< "Minutes in visit remaining: " << 25 - timer
+							<< endl << endl;
+
+						cout << "High Priority Patient Recieved" << endl
+							<< "Immediate attention administered:" << endl
+							<< "Name: " << STL_PrioQ.top().second << endl
+							<< "Care began at " << ConvertTime(time, 12, false)
+							<< endl << endl;
+					}
+				}
+
+				emergencyTimer++;
+				time++;
+
+				if (emergencyTimer == 25)
+				{
+					cout << "Patient Discharge:" << endl
+						<< "Name: " << STL_PrioQ.top().second << endl
+						<< "Care ended at " << ConvertTime(time, 12, false)
+						<< endl << endl;
+
+					STL_PrioQ.pop();
+
+					if (!STL_PrioQ.empty())
+					{
+						cout << "Patient Care Resumed:" << endl
+							<< "Name: " << STL_PrioQ.top().second << endl
+							<< "Care resumed at " << ConvertTime(time, 12, false) << endl
+							<< "Minutes in visit remaining: " << 25 - timer
+							<< endl << endl;
+					}
+					emergency = false;
+
+					emergencyTimer = 0;
+
+				}
+			}
+			else if (!emergency)
+			{
+				if (timer == 0)
+				{
+					if (!STL_PrioQ.empty())
+					{
+						cout << "Patient Admitted:" << endl
+							<< "Name: " << STL_PrioQ.top().second << endl
+							<< "Care began at " << ConvertTime(time, 12, false)
+							<< endl << endl;
+					}
+				}
+
+				timer++;
+				time++;
+
+				if (timer == MAX_CARE_TIME)
+				{
+					timer = 0;
+
+					cout << "Patient Discharge:" << endl
+						<< "Name: " << STL_PrioQ.top().second << endl
+						<< "Care ended at " << ConvertTime(time, 12, false)
+						<< endl << endl;
+
+					STL_PrioQ.pop();
+
+				}
+			}
+
+		}
+		else
+		{
+			time++;
+		}
+	}
+
+	cout << endl << "  --- END OF DAY  " << ConvertTime(MAX_TOTAL_MINUTES, 12) << " ----"
+		<< endl << endl;
 
 	system("pause");
 	return 0;
 }
+
 
 
 std::string ConvertTime(int totalMinutes, int startHour, bool hours24Style)
@@ -133,12 +269,12 @@ std::string ConvertTime(int totalMinutes, int startHour, bool hours24Style)
 
 	if (!hours24Style)
 	{
-		if (startHour = 12)
+		if (startHour == 12)
 		{
 			hours = totalMinutes / 60;
 			if (hours == 0)
 			{
-				hours == 12;
+				hours = 12;
 			}
 		}
 		else
@@ -147,26 +283,26 @@ std::string ConvertTime(int totalMinutes, int startHour, bool hours24Style)
 		}
 	}
 
-	
 
-	if ((ceil(log10(hours + 1)) == 2))
+
+	if ((hours < 10))
 	{
-		output += std::to_string(hours);
+		output += '0' + std::to_string(hours);
 	}
 	else
 	{
-		output += '0' + std::to_string(hours);
+		output += std::to_string(hours);
 	}
 
 	output += ":";
 
-	if ((ceil(log10(minutes + 1)) == 2))
+	if ((minutes < 10))
 	{
-		output += std::to_string(minutes);
+		output += '0' + std::to_string(minutes);
 	}
 	else
 	{
-		output += '0' + std::to_string(minutes);
+		output += std::to_string(minutes);
 	}
 
 
@@ -175,16 +311,15 @@ std::string ConvertTime(int totalMinutes, int startHour, bool hours24Style)
 
 }
 
-
 void DischargePatient(ArrayMaxHeap <std::string, int>& heap, int totalMinutes)
 {
-	
+
 	cout << "Patient Discharge:" << endl
 		<< "Name: " << heap.max() << endl
 		<< "Care ended at " << ConvertTime(totalMinutes, 12, false)
 		<< endl << endl;
 
-	
+
 }
 
 void AdmitPatient(ArrayMaxHeap <std::string, int>& heap, int totalMinutes)
