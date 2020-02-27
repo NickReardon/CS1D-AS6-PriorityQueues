@@ -64,29 +64,32 @@
 
 ****************************************************************************
 
-Alice Ailment(7)
-Bob Bleeding(5)  Tom Temperature(6)
-Frank Feelingbad(3)  Paula Pain(4)  Irene Ill(1)
+
+ Now doing written Priority Queue based on a heap
+
+
+  -- 12::00 --
+ Creating priority queue of waiting patients...
 
 Patient Admitted:
 Name: Alice Ailment
-Care began at 00:00
+Care began at 12:00
 
 Patient Discharge:
 Name: Alice Ailment
-Care ended at 00:25
+Care ended at 12:25
 
 Patient Admitted:
 Name: Tom Temperature
-Care began at 00:25
+Care began at 12:25
 
 Patient Discharge:
 Name: Tom Temperature
-Care ended at 00:50
+Care ended at 12:50
 
 Patient Admitted:
 Name: Bob Bleeding
-Care began at 00:50
+Care began at 12:50
 
 Patient Care Interrupted:
 Name: Sam Sneezing
@@ -161,3 +164,113 @@ Minutes in visit remaining: 19
 Patient Discharge:
 Name: Irene Ill
 Care ended at 03:45
+
+
+  --- END OF DAY  05:00 ----
+
+____________________________________________________________
+
+ Now doing STL Priority Queue
+
+
+  -- 12::00 --
+ Creating priority queue of waiting patients...
+
+Patient Admitted:
+Name: Alice Ailment
+Care began at 12:00
+
+Patient Discharge:
+Name: Alice Ailment
+Care ended at 12:25
+
+Patient Admitted:
+Name: Tom Temperature
+Care began at 12:25
+
+Patient Discharge:
+Name: Tom Temperature
+Care ended at 12:50
+
+Patient Admitted:
+Name: Bob Bleeding
+Care began at 12:50
+
+Patient Care Interrupted:
+Name: Sam Sneezing
+Care interrupted at 01:14
+Minutes in visit remaining: 1
+
+High Priority Patient Recieved
+Immediate attention administered:
+Name: Sam Sneezing
+Care began at 01:14
+
+Patient Discharge:
+Name: Sam Sneezing
+Care ended at 01:39
+
+Patient Care Resumed:
+Name: Bob Bleeding
+Care resumed at 01:39
+Minutes in visit remaining: 1
+
+Patient Discharge:
+Name: Bob Bleeding
+Care ended at 01:40
+
+Patient Admitted:
+Name: Paula Pain
+Care began at 01:40
+
+Patient Discharge:
+Name: Paula Pain
+Care ended at 02:05
+
+Patient Admitted:
+Name: Frank Feelingbad
+Care began at 02:05
+
+Patient Discharge:
+Name: Frank Feelingbad
+Care ended at 02:30
+
+Patient Admitted:
+Name: Cathy Coughing
+Care began at 02:30
+
+Patient Discharge:
+Name: Cathy Coughing
+Care ended at 02:55
+
+Patient Admitted:
+Name: Irene Ill
+Care began at 02:55
+
+Patient Care Interrupted:
+Name: Sid Sickly
+Care interrupted at 03:01
+Minutes in visit remaining: 19
+
+High Priority Patient Recieved
+Immediate attention administered:
+Name: Sid Sickly
+Care began at 03:01
+
+Patient Discharge:
+Name: Sid Sickly
+Care ended at 03:26
+
+Patient Care Resumed:
+Name: Irene Ill
+Care resumed at 03:26
+Minutes in visit remaining: 19
+
+Patient Discharge:
+Name: Irene Ill
+Care ended at 03:45
+
+
+  --- END OF DAY  05:00 ----
+
+Press any key to continue . . .
